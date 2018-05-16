@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Survey Form</title>
+      {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'django_app\css\main.css' %}">
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+    <body>
+        <!-- <p>Random Word By {{name}}</p> -->
+        <div class = 'wrapper'>
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+          <h3>Submitted Information</h3>
+            <div class = 'inline'>
+                <p>Name:</p>
+                <p>Dojo Location:</p>
+                <p>Favorite Language:</p>
+                <p>Comment:</p>
+            </div>
+          <div class = 'inline'>
+              <p>{{request.POST['name']}}</p>
+              <p>{{request.POST['location']}}</p>
+              <p>{{request.POST['language']}}</p>
+              <p>{{request.POST['comment']}}</p>
+          </div>
+          <form action = '/'>
+              <button>Go Back</button>
+          </form>
+          <!-- <p class = 'number_box'>
+          </p> -->
+          <!-- <form action="/generate" method="post">
+            <input type="text" id="name" name="name">
+            <select action = "" name = "location">
+              <option value = "Mountain View">Mountain View</option>
+              <option value = "Seattle">Seattle</option>
+              <option value = "San Jose">San Jose</option>
+            </select>
+            <select>
+                <option value = "JavaScript">JavaScript</option>
+                <option value = "Python">Python</option>
+                <option value = "C">C</option>
+            </select>
+            <input type = 'textarea' id = 'comment' name = 'comment'>
+
+            <button class = 'gen'>Submit</button>
+          </form> -->
+        </div>
+    </body>
+  </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Survey Form</title>
+      {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'django_app\css\main.css' %}">
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+    <body>
+        <!-- <p>Random Word By {{name}}</p> -->
+        <div class = 'wrapper'>
+          <h1>Add a new word</h1>
+          <form action="/generate" method="post">
+            {% csrf_token %}
+            <input type="text" id="word" name="word">
+            <input type= "radio" id="red" name = "color" value= "red">
+            <label for ="red">Red</label>
+            <input type= "radio" id="blue" name = "color" value= "blue">
+            <label for ="blue">Blue</label>
+            <input type= "radio" id="green" name = "color" value= "green">
+            <label for ="green">Green</label>
+            <input type="checkbox" name="bold" id= "bold" value='1'>
+            <label for ="bold">Emboldify</label>
+            <button class = 'gen'>Add</button>
+          </form>
+        </div>
+    </body>
+  </html>
