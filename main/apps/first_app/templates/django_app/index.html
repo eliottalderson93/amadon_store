@@ -2,7 +2,7 @@
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Survey Form</title>
+      <title>Amadon Store</title>
       {% load static %}
       <!-- The line above tells Django to be ready to listen for static files -->
       <link rel="stylesheet" href="{% static 'django_app\css\main.css' %}">
@@ -10,12 +10,44 @@
            Django collects files within all static folders and puts them within a single folder -->    
     </head>
     <body>
-        <!-- <p>Random Word By {{name}}</p> -->
         <div class = 'wrapper'>
-          <h1>Add a new word</h1>
-          <form action="/generate" method="post">
-            {% csrf_token %}
-            <input type="text" id="word" name="word">
+          <div class = 'store'>
+              {% csrf_token %}
+            <div class = 'item'>
+              <h6>Item</h6>
+              {% for key in request.session.context.products %}
+              <p>{{key}}</p>
+              {% endfor %}
+            </div>
+            <div class = 'price'>
+              <h6>Price</h6>
+              {% for key in request.session.context.price %}
+              <p>{{key}}</p>
+              {% endfor %}
+            </div>
+            <div class = 'quantity'>
+              <h6>Quantity</h6>
+              {% for key in request.session.context.products %}
+              <select name = {{key}} form = 'purchases'>
+                <option class = 'mer' value = '0'>0</option>
+                <option class = 'mer' value = "1">1</option>
+                <option class = 'mer' value = "2">2</option>
+                <option class = 'mer' value = "3">3</option>
+              </select>
+              {% endfor %}
+            </div>
+            <div class = 'actions'>
+              <h6>Actions</h6>
+              {% for key in request.session.context.products %}
+              <form action = '/generate' method = 'post' id = 'purchases'>
+                {% csrf_token %}
+                <button>Buy</button>
+              </form>
+              {% endfor %}
+            </div>
+          </form>
+          <!-- <form action="/generate" method="post">
+             <input type="text" id="word" name="word">
             <input type= "radio" id="red" name = "color" value= "red">
             <label for ="red">Red</label>
             <input type= "radio" id="blue" name = "color" value= "blue">
@@ -23,9 +55,9 @@
             <input type= "radio" id="green" name = "color" value= "green">
             <label for ="green">Green</label>
             <input type="checkbox" name="bold" id= "bold" value='1'>
-            <label for ="bold">Emboldify</label>
-            <button class = 'gen'>Add</button>
-          </form>
+            <label for ="bold">Emboldify</label> -->
+            <!--<button class = 'gen'>Add</button> -->
+          </div>
         </div>
     </body>
   </html>

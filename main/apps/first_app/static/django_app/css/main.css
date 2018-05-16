@@ -3,7 +3,14 @@
     padding:0px;
     margin:0px;
     /* border:red dashed 1px; */
-    text-align:center;
+    display:block;
+}
+title{
+    font-size:30px;
+    background-color:gray;
+    padding:10px;
+    font-weight:bold;
+    padding-left:15px;
 }
 /*This is the start of the webpage*/
 .wrapper{
@@ -13,16 +20,40 @@
     background-color:silver;
 }
     /*Define the classes below*/
-    .number_box{
-        height:70px;
-        width:500px;
-        padding:35px;
-        margin:auto;
-        border:solid black 4px;
-        font-size:20px;
-        background-color:lightblue;
-        margin-top:10px;
+    .store{
+        display:block;
+        background-color:white;
+        border:solid black 3px;
+        height:700px;
+        width:1000px;
     }
+        .store div h6{
+            background-color:gray;
+        }
+        .store div{
+            display:inline-block;
+            height:670px;
+            vertical-align:top;
+        }
+        .item{
+            width:300px;
+            border-right:solid black 2px;
+        }
+        .price{
+            width:150px;
+            border-right:solid black 2px;
+        }
+        .quantity{
+            width:200px;
+            border-right:solid black 2px;
+        }
+            .mer{
+                display:block;
+                margin:auto;
+            }
+        .actions{
+            width:300px;
+        }
     .gen{
         display:block;
         margin:auto;

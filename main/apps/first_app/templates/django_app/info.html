@@ -2,7 +2,7 @@
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Survey Form</title>
+      <title>Thank you for your business!</title>
       {% load static %}
       <!-- The line above tells Django to be ready to listen for static files -->
       <link rel="stylesheet" href="{% static 'django_app\css\main.css' %}">
@@ -10,55 +10,13 @@
            Django collects files within all static folders and puts them within a single folder -->    
     </head>
     <body>
-        <!-- <p>Random Word By {{name}}</p> -->
+        <!-- just a header, with 2 ps, and a button-->
         <div class = 'wrapper'>
-            {% if messages %}
-                {% for message in messages %}
-                <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-          <form action = '/'>
-            {% csrf_token %}
-              <button class = 'gen'>Go Back</button>
-          </form>
-          <form action = '/delete'>
-            {% csrf_token %}
-            <button class = 'gen'>Reset</button>
-          </form>
-          <h3>Words</h3>
-          {% for this_word_obj in request.session.word_list%}
-          {% if this_word_obj.color == 'red'%}
-            {% if this_word_obj.bold == True %}
-              <div class = 'line'>
-                <p style = "color:red;">{{this_word_obj.word}}</p> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% else %}
-              <div class = 'line'>
-                <h6 style = "color:red;">{{this_word_obj.word}}</h6> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% endif %}
-          {% elif this_word_obj.color == 'blue'%}
-            {% if this_word_obj.bold == True %}
-              <div class = 'line'>
-                <p style = "color:blue;">{{this_word_obj.word}}</p> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% else %}
-              <div class = 'line'>
-                <h6 style = "color:blue;">{{this_word_obj.word}}</h6> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% endif %}
-          {% else %}
-            {% if this_word_obj.bold == True %}
-              <div class = 'line'>
-                <p style = "color:green;">{{this_word_obj.word}}</p> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% else %}
-              <div class = 'line'>
-                <h6 style = "color:green;">{{this_word_obj.word}}</h6> <p>-- {{this_word_obj.timestamp}}</p>
-              </div>
-            {% endif %}
-          {% endif %}
-          {% endfor %}
+            <p>We charged your card for {{request.session.amount_total_this_purchase}}</p>
+            <p>You have ordered {{request.session.num_items}} items so far and spent {{request.session.amount_total_overall}} with amadon.com!</p>
+            <form action = '/'>
+              <button>Go Back</button>
+            </form>
 
           <!-- <p class = 'number_box'>
           </p> -->
